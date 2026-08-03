@@ -30,6 +30,42 @@
     return LANGUAGES.find(l => l.code === lang) ? lang : 'en';
   }
 
+  // --- ANTWORTSPRACHE ---
+  // Bewusst code-seitig und nicht aus _locales: Die Anweisung darf nicht von
+  // der Browser-UI-Sprache abhaengen (bisher stand z.B. "Respond exclusively
+  // in Englisch." im Request). Eine einzelne Zeile verliert ausserdem gegen
+  // ein andersprachiges Transkript; erst die englische Detail-Anweisung plus
+  // Wiederholung in der Zielsprache haelt alle 11 Sprachen (Matrix-Test
+  // 2026-07-23, Rest-Flakiness bei ja).
+  const LANG_NAMES_EN = {
+    ar: 'Arabic', zh: 'Chinese (Simplified)', en: 'English', fr: 'French',
+    de: 'German', hi: 'Hindi', ja: 'Japanese', ko: 'Korean',
+    pt: 'Portuguese', ru: 'Russian', es: 'Spanish'
+  };
+
+  const LANG_INSTR_NATIVE = {
+    ar: 'مهم: اكتب الرد بأكمله باللغة العربية فقط. كل سطر، بما في ذلك الكلمة الافتتاحية والملخص وجميع النقاط وجميع الخطوات والجملة الختامية، يجب أن يكون بالعربية. لا تستخدم أبدا لغة النص المفرغ.',
+    zh: '重要提示：请只用简体中文撰写整个回复。每一行，包括开头的引导词、摘要、所有要点、所有步骤和结尾句，都必须是简体中文。绝对不要使用字幕文本的语言。',
+    en: 'IMPORTANT: Write the entire response in English only. Every line, including the introductory word, the summary, all bullet points, all steps and the closing sentence, must be in English. Never use the language of the transcript.',
+    fr: "IMPORTANT : Rédigez toute la réponse exclusivement en français. Chaque ligne, y compris le mot d'introduction, le résumé, tous les points, toutes les étapes et la phrase finale, doit être en français. N'utilisez jamais la langue de la transcription.",
+    de: 'WICHTIG: Schreibe die gesamte Antwort ausschließlich auf Deutsch. Jede Zeile, einschließlich Einleitungswort, Zusammenfassung, aller Punkte, aller Schritte und des Schlusssatzes, muss auf Deutsch sein.',
+    hi: 'महत्वपूर्ण: पूरा उत्तर केवल हिंदी में लिखें। हर पंक्ति, जिसमें प्रारंभिक शब्द, सारांश, सभी बिंदु, सभी चरण और अंतिम वाक्य शामिल हैं, हिंदी में होनी चाहिए। ट्रांसक्रिप्ट की भाषा का कभी उपयोग न करें।',
+    ja: '重要：回答全体を必ず日本語のみで書いてください。冒頭の導入語、要約、すべての箇条書き、すべての手順、結びの文を含む全行が日本語でなければなりません。文字起こしの言語は決して使わないでください。',
+    ko: '중요: 전체 답변을 한국어로만 작성하세요. 첫 안내 단어, 요약, 모든 항목, 모든 단계, 마지막 문장을 포함한 모든 줄이 한국어여야 합니다. 자막 텍스트의 언어는 절대 사용하지 마세요.',
+    pt: 'IMPORTANTE: Escreva toda a resposta exclusivamente em português. Cada linha, incluindo a palavra introdutória, o resumo, todos os pontos, todos os passos e a frase final, deve estar em português. Nunca use a língua da transcrição e nunca use espanhol.',
+    ru: 'ВАЖНО: Пишите весь ответ только на русском языке. Каждая строка, включая вводное слово, резюме, все пункты, все шаги и заключительное предложение, должна быть на русском. Никогда не используйте язык транскрипта.',
+    es: 'IMPORTANTE: Escribe toda la respuesta exclusivamente en español. Cada línea, incluida la palabra introductoria, el resumen, todos los puntos, todos los pasos y la frase final, debe estar en español. Nunca uses el idioma de la transcripción.'
+  };
+
+  function buildLangInstruction(langCode) {
+    const name = LANG_NAMES_EN[langCode] || 'English';
+    const native = LANG_INSTR_NATIVE[langCode] || LANG_INSTR_NATIVE['en'];
+    return `IMPORTANT: Write your entire response in ${name}. Every line, including the ` +
+      `introductory word, the summary, all bullet points, all steps and the ` +
+      `closing sentence, must be in ${name}. Never use the language of the ` +
+      `transcript unless it is ${name}.\n${native}`;
+  }
+
   // --- DEFAULT DISTILLER PROMPT ---
   const DEFAULT_DISTILLER_PROMPT = chrome.i18n.getMessage('default_prompt');
 
@@ -126,14 +162,10 @@
   }
 
   // --- DEFAULT RANDOM LISTS ---
-  const DEFAULT_MOODS = [
-    'neugierig', 'begeistert', 'nachdenklich', 'humorvoll',
-    'angenehm überrascht', 'respektvoll', 'inspiriert', 'aufmerksam', 'anerkennend'
-  ];
-
-  const DEFAULT_STYLES = [
-    'förmlich', 'informell', 'enthusiastisch'
-  ];
+  // Aus _locales, damit die Listen der Browser-UI-Sprache folgen wie der
+  // Default-Prompt; Trennzeichen ist in allen Sprachen das einfache Komma.
+  const DEFAULT_MOODS = chrome.i18n.getMessage('default_moods').split(',').map(s => s.trim());
+  const DEFAULT_STYLES = chrome.i18n.getMessage('default_styles').split(',').map(s => s.trim());
 
   // --- DOM EXTRACTION HELPERS ---
   function getVideoTitle() {
@@ -1425,16 +1457,14 @@
           const rawPrompt = r.distillerPrompt || DEFAULT_DISTILLER_PROMPT;
           const cleanPrompt = filterPromptComments(rawPrompt);
           langCode = r.distillerLang || detectBrowserLang();
-          const langEntry = LANGUAGES.find(l => l.code === langCode);
-          const langName = langEntry ? langEntry.label.split(' — ')[0].trim() : 'English';
           const model = (r.distillerModel || DEFAULT_MODEL).trim() || DEFAULT_MODEL;
-          resolve({ cleanPrompt, langName, model });
+          resolve({ cleanPrompt, model });
         });
       });
 
       // Templates ersetzen ({mood}, {style}, {title}, {creator}, ...)
       const templatedPrompt = await applyTemplates(userPrompt.cleanPrompt);
-      const finalPrompt = `${templatedPrompt}\n\nRespond exclusively in ${userPrompt.langName}.`;
+      const finalPrompt = `${templatedPrompt}\n\n${buildLangInstruction(langCode)}`;
 
       // 2. Transkript holen
       copyButton.textContent = chrome.i18n.getMessage('btn_fetching');

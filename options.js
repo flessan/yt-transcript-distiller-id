@@ -158,14 +158,10 @@ saveBtn.addEventListener('click', () => {
 });
 
 // --- MOOD & STYLE LISTS ---
-const DEFAULT_MOODS = [
-  'neugierig', 'begeistert', 'nachdenklich', 'humorvoll',
-  'angenehm überrascht', 'respektvoll', 'inspiriert', 'aufmerksam', 'anerkennend'
-];
-
-const DEFAULT_STYLES = [
-  'förmlich', 'informell', 'enthusiastisch'
-];
+// Aus _locales, damit die Listen der Browser-UI-Sprache folgen wie der
+// Default-Prompt; Trennzeichen ist in allen Sprachen das einfache Komma.
+const DEFAULT_MOODS = chrome.i18n.getMessage('default_moods').split(',').map(s => s.trim());
+const DEFAULT_STYLES = chrome.i18n.getMessage('default_styles').split(',').map(s => s.trim());
 
 const moodListArea  = document.getElementById('moodList');
 const styleListArea = document.getElementById('styleList');
