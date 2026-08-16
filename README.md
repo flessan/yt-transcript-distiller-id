@@ -8,6 +8,25 @@ You open a video. Twelve minutes. You watch. You wait. The one insight you came 
 
 ---
 
+## Which build do I need
+
+This is the Firefox add-on. Chrome, Edge, Brave, Vivaldi and Opera need the [Chrome build](https://github.com/michaelruck/yt-transcript-distiller-chrome), a separate source tree with the same features, rebuilt on Manifest V3.
+
+| Your browser | What to install | Minimum version |
+|---|---|---|
+| Firefox on the desktop | this add-on, from [addons.mozilla.org](https://addons.mozilla.org/addon/youtube-transcript-distiller) | 140 |
+| Firefox for Android | this add-on, from [addons.mozilla.org](https://addons.mozilla.org/addon/youtube-transcript-distiller) | 142 |
+| Chrome, Chromium, Edge | [Chrome build](https://github.com/michaelruck/yt-transcript-distiller-chrome) | 111 |
+| Brave, Vivaldi, Opera, other Chromium browsers | [Chrome build](https://github.com/michaelruck/yt-transcript-distiller-chrome) | whichever release sits on Chromium 111 or newer |
+| Safari | not supported | |
+| Chrome or Edge on Android | not supported | |
+
+The Chrome build is not in the Chrome Web Store yet, so it installs by hand: download the ZIP from its [latest release](https://github.com/michaelruck/yt-transcript-distiller-chrome/releases/latest) and follow [INSTALL.md](https://github.com/michaelruck/yt-transcript-distiller-chrome/blob/main/INSTALL.md), which walks through it for people who have never loaded an extension that way.
+
+Gecko-based forks such as LibreWolf, Waterfox, Floorp and Zen install add-ons from addons.mozilla.org as well, so this is the build to take there. Untested by me; the Firefox version they are built on still has to be 140 or newer.
+
+---
+
 ## Features
 
 - **AI-powered summarization** via Google Gemini (free API key required)
@@ -106,7 +125,7 @@ The **Gemini Model** dropdown (add-on settings page in `about:addons`) offers th
 
 - Firefox 140+ (Desktop) / Firefox for Android 142+
 - A free [Google Gemini API key](https://aistudio.google.com/app/apikey)
-- A YouTube video with subtitles/transcript available
+- A YouTube video that has a transcript, automatically generated ones included
 - A Google account (required to post comments)
 
 ---
