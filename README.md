@@ -12,14 +12,14 @@ You open a video. Twelve minutes. You watch. You wait. The one insight you came 
 
 This is the Firefox add-on. Chrome, Edge, Brave, Vivaldi and Opera need the [Chrome build](https://github.com/michaelruck/yt-transcript-distiller-chrome), a separate source tree with the same features, rebuilt on Manifest V3.
 
-| Your browser | What to install | Minimum version |
+| Your browser | What to install | Notes |
 |---|---|---|
-| Firefox on the desktop | this add-on, from [addons.mozilla.org](https://addons.mozilla.org/addon/youtube-transcript-distiller) | 140 |
-| Firefox for Android | this add-on, from [addons.mozilla.org](https://addons.mozilla.org/addon/youtube-transcript-distiller) | 142 |
-| Chrome, Chromium, Edge | [Chrome build](https://github.com/michaelruck/yt-transcript-distiller-chrome) | 111 |
-| Brave, Vivaldi, Opera, other Chromium browsers | [Chrome build](https://github.com/michaelruck/yt-transcript-distiller-chrome) | whichever release sits on Chromium 111 or newer |
-| Safari | not supported | |
-| Chrome or Edge on Android | not supported | |
+| Firefox on the desktop | this add-on, from [addons.mozilla.org](https://addons.mozilla.org/addon/youtube-transcript-distiller) | version 140 or newer |
+| Firefox for Android | this add-on, from [addons.mozilla.org](https://addons.mozilla.org/addon/youtube-transcript-distiller) | version 142 or newer |
+| Chrome, Chromium, Edge | [Chrome build](https://github.com/michaelruck/yt-transcript-distiller-chrome) | version 111 or newer |
+| Brave, Vivaldi, Opera, other Chromium browsers | [Chrome build](https://github.com/michaelruck/yt-transcript-distiller-chrome) | built on Chromium 111 or newer; those forks number themselves, so check the line labelled Chromium on `brave://version` rather than the browser's own version |
+| Chrome or Edge on Android | this add-on, in Firefox for Android | Chrome for Android runs no extensions at all, and Edge for Android only a short list Microsoft picks. That is a limit of those two browsers, not of this add-on: on Android, Firefox is the browser that lets you add anything |
+| Safari | nothing available | Safari runs neither Firefox nor Chrome extensions. Every extension has to be rebuilt as a signed Mac app in Xcode and shipped through the App Store, which is a separate product rather than a setting, and I have not built one |
 
 The Chrome build is not in the Chrome Web Store yet, so it installs by hand: download the ZIP from its [latest release](https://github.com/michaelruck/yt-transcript-distiller-chrome/releases/latest) and follow [INSTALL.md](https://github.com/michaelruck/yt-transcript-distiller-chrome/blob/main/INSTALL.md), which walks through it for people who have never loaded an extension that way.
 
