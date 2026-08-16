@@ -12,6 +12,7 @@
   // --- SUPPORTED LANGUAGES (alphabetical by English name) ---
   const LANGUAGES = [
     { code: 'ar', label: chrome.i18n.getMessage('lang_ar') },
+	{ code: 'id', label: chrome.i18n.getMessage('lang_id') },
     { code: 'zh', label: chrome.i18n.getMessage('lang_zh') },
     { code: 'en', label: chrome.i18n.getMessage('lang_en') },
     { code: 'fr', label: chrome.i18n.getMessage('lang_fr') },
@@ -38,13 +39,14 @@
   // Wiederholung in der Zielsprache haelt alle 11 Sprachen (Matrix-Test
   // 2026-07-23, Rest-Flakiness bei ja).
   const LANG_NAMES_EN = {
-    ar: 'Arabic', zh: 'Chinese (Simplified)', en: 'English', fr: 'French',
+    ar: 'Arabic', id: 'Indonesian', zh: 'Chinese (Simplified)', en: 'English', fr: 'French',
     de: 'German', hi: 'Hindi', ja: 'Japanese', ko: 'Korean',
     pt: 'Portuguese', ru: 'Russian', es: 'Spanish'
   };
 
   const LANG_INSTR_NATIVE = {
     ar: 'مهم: اكتب الرد بأكمله باللغة العربية فقط. كل سطر، بما في ذلك الكلمة الافتتاحية والملخص وجميع النقاط وجميع الخطوات والجملة الختامية، يجب أن يكون بالعربية. لا تستخدم أبدا لغة النص المفرغ.',
+	id: 'PENTING: Tulis seluruh respons hanya dalam bahasa Indonesia. Setiap baris, termasuk kata pembuka, rangkuman, semua poin, semua langkah, dan kalimat penutup, harus menggunakan bahasa Indonesia. Jangan pernah menggunakan bahasa transkrip kecuali bahasa tersebut adalah bahasa Indonesia.',
     zh: '重要提示：请只用简体中文撰写整个回复。每一行，包括开头的引导词、摘要、所有要点、所有步骤和结尾句，都必须是简体中文。绝对不要使用字幕文本的语言。',
     en: 'IMPORTANT: Write the entire response in English only. Every line, including the introductory word, the summary, all bullet points, all steps and the closing sentence, must be in English. Never use the language of the transcript.',
     fr: "IMPORTANT : Rédigez toute la réponse exclusivement en français. Chaque ligne, y compris le mot d'introduction, le résumé, tous les points, toutes les étapes et la phrase finale, doit être en français. N'utilisez jamais la langue de la transcription.",
