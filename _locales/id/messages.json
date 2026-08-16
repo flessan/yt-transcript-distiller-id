@@ -1,0 +1,194 @@
+{
+  "ext_name": {
+    "message": "Penyuling Transkrip YouTube"
+  },
+  "ext_description": {
+    "message": "Mengambil transkrip YouTube dan merangkumnya dengan Google Gemini AI."
+  },
+  "btn_distiller": {
+    "message": "Penyuling Transkrip"
+  },
+  "btn_fetching": {
+    "message": "Mengambil…"
+  },
+  "btn_thinking": {
+    "message": "AI sedang berpikir…"
+  },
+  "btn_injecting": {
+    "message": "Menyisipkan…"
+  },
+  "btn_done": {
+    "message": "Selesai ✓"
+  },
+  "btn_error": {
+    "message": "Error!"
+  },
+  "modal_title": {
+    "message": "Penyuling Transkrip – Pengaturan"
+  },
+  "lbl_apikey": {
+    "message": "Kunci API Gemini"
+  },
+  "lbl_apikey_link": {
+    "message": "➜ Dapatkan kunci gratis"
+  },
+  "btn_show": {
+    "message": "Tampilkan"
+  },
+  "btn_hide": {
+    "message": "Sembunyikan"
+  },
+  "lbl_prompt": {
+    "message": "Prompt"
+  },
+  "btn_reset": {
+    "message": "↺ Atur Ulang"
+  },
+  "lbl_lang": {
+    "message": "Bahasa respons"
+  },
+  "btn_cancel": {
+    "message": "Batal"
+  },
+  "btn_save": {
+    "message": "Simpan"
+  },
+  "msg_saved": {
+    "message": "Tersimpan ✓"
+  },
+  "msg_save_error": {
+    "message": "Error saat menyimpan!"
+  },
+  "msg_no_key": {
+    "message": "Silakan masukkan kunci API."
+  },
+  "opt_title": {
+    "message": "Penyuling Transkrip YouTube – Pengaturan"
+  },
+  "opt_subtitle": {
+    "message": "oleh Michael Ruck · marsgasse.com"
+  },
+  "opt_apikey_hint": {
+    "message": "Dapatkan kunci API gratis di"
+  },
+  "opt_prompt_hint": {
+    "message": "Prompt ini dikirim ke Gemini bersama dengan transkrip."
+  },
+  "opt_prompt_notice": {
+    "message": "Pembaruan ini menyertakan prompt default yang disempurnakan. ↺ Atur Ulang akan menampilkannya — perubahan baru berlaku setelah Anda mengklik Simpan."
+  },
+  "opt_lang_hint": {
+    "message": "Default: bahasa peramban. Cadangan: Bahasa Inggris."
+  },
+  "lbl_model": {
+    "message": "Model Gemini"
+  },
+  "opt_model_hint": {
+    "message": "Flash-Lite adalah defaultnya. Flash dan Pro memiliki batas kuota gratis yang lebih ketat; Pro pada dasarnya memerlukan paket berbayar. Referensi model:"
+  },
+  "opt_model_custom": {
+    "message": "ID model kustom…"
+  },
+  "err_switch_model": {
+    "message": "Tips: pilih model Gemini yang berbeda di pengaturan ekstensi."
+  },
+  "err_not_your_fault": {
+    "message": "Error ini tidak dapat diperbaiki di pengaturan. Hal ini biasanya disebabkan oleh perubahan di sisi Google. Silakan periksa apakah ada pembaruan ekstensi yang tersedia:"
+  },
+  "err_copied_fallback": {
+    "message": "Rangkuman telah disalin ke papan klip — tempelkan secara manual ke kolom komentar."
+  },
+  "err_play_video": {
+    "message": "Tips: putar video sebentar, lalu coba lagi."
+  },
+  "lang_ar": {
+    "message": "Arab"
+  },
+  "lang_id": {
+    "message": "Bahasa Indonesia"
+  },
+  "lang_zh": {
+    "message": "Tionghoa (Sederhana)"
+  },
+  "lang_en": {
+    "message": "Inggris"
+  },
+  "lang_fr": {
+    "message": "Prancis"
+  },
+  "lang_de": {
+    "message": "Jerman"
+  },
+  "lang_hi": {
+    "message": "Hindi"
+  },
+  "lang_ja": {
+    "message": "Jepang"
+  },
+  "lang_ko": {
+    "message": "Korea"
+  },
+  "lang_pt": {
+    "message": "Portugis"
+  },
+  "lang_ru": {
+    "message": "Rusia"
+  },
+  "lang_es": {
+    "message": "Spanyol"
+  },
+  "default_prompt": {
+    "message": "# Meta-prompt dengan variabel templat, edit sesuai kebutuhan\n# Tersedia: {mood} {style} {title} {creator} {date} {version}\n# Baris yang diawali dengan # akan diabaikan dan tidak dikirim ke Gemini\nSuasana hati Anda sebagai pemberi komentar hari ini adalah: {mood}. Gaya Anda adalah: {style}.\nSaluran ini bernama: {creator}. Periksa apakah nama saluran mengandung nama depan asli. Jika ya, sapa kreator dengan nama depan tersebut. Jika tidak, gunakan nama saluran atau lewati sapaan personal.\nMulailah dengan kalimat ucapan terima kasih yang singkat dan antusias dalam bahasa respons. Tulislah seolah-olah Anda telah menonton videonya. Sesuaikan kalimat dengan suasana hati dan gaya: hangat dan tulus. Kemudian baris kosong, lalu rangkuman.\n\nAnalisis konten dan tentukan jenisnya, lalu rangkum sebagai komentar YouTube:\n- *Resep* → daftar bahan beserta takarannya, lalu langkah-langkah bernomor\n- *Tutorial / Petunjuk* → langkah demi langkah bernomor, sorot alat atau persyaratan dengan *tebal*\n- *Obrolan / Wawancara / Debat* → ekstrak argumen dan kesimpulan utama, lewati basa-basi\n- *Clickbait / Hype* → ekstrak informasi inti yang sebenarnya, abaikan hiperbola\n- *Lainnya* → rangkum poin-poin terpenting\n\nMulailah rangkuman dengan satu kata pengantar (misalnya 'Rangkuman:', 'Resep:', 'Langkah:'), jangan gunakan kalimat utuh.\n\nAngka dan bukti:\n• Masukkan angka konkret dari video ke dalam rangkuman: ukuran, persentase, harga, kapasitas, rentang waktu.\n• Jika sebuah studi atau sumber disebutkan, sebutkan sedetail yang disebutkan dalam video (penulis, institusi, tahun). Jika video tidak menyebutkan studi mana yang dimaksud, tulis: sebuah studi disebutkan tetapi tidak disebutkan namanya.\n• Jika video mendukung klaim utama tanpa angka konkret atau sumber yang dapat diverifikasi, akhiri rangkuman dengan satu kalimat yang menyatakan hal tersebut.\n• Gunakan hanya angka yang benar-benar muncul dalam transkrip. Jika tidak ada, katakan demikian; jangan tambahkan apa pun dari pengetahuan Anda sendiri.\n\nAturan pemformatan:\n• Gunakan • sebagai poin bullet\n• Gunakan 1. 2. 3. untuk langkah-langkah atau ketika angka spesifik diharapkan\n• Tambahkan baris kosong setelah setiap poin\n• Sorot hanya kata kunci atau sub-judul individual dengan *tebal*\n• Pisahkan bagian dengan baris kosong\n• Tanpa Markdown (tanpa **, tanpa ##, tanpa -)\n• Tanpa tag HTML, tanpa indentasi\n• Tanpa em dash (—) dan tanpa en dash (–): gunakan koma, titik dua, atau tanda kurung sebagai gantinya; untuk rentang angka gunakan tanda hubung (5-10)\n• Hanya karakter yang dapat diketik langsung pada keyboard: tanda kutip lurus alih-alih tanda kutip melengkung, tiga titik tunggal alih-alih karakter …; pengecualian: bullet •"
+  },
+  "default_moods": {
+    "message": "penasaran, antusias, penuh pemikiran, humoris, terkejut secara positif, penuh hormat, terinspirasi, penuh perhatian, penuh apresiasi"
+  },
+  "default_styles": {
+    "message": "formal, informal, antusias"
+  },
+  "err_no_key": {
+    "message": "Tidak ada kunci API Gemini yang diatur. Silakan masukkan di pengaturan ekstensi."
+  },
+  "err_no_transcript": {
+    "message": "Transkrip tidak tersedia. Video ini mungkin tidak memiliki subtitle."
+  },
+  "err_no_comments": {
+    "message": "Bagian komentar tidak ditemukan. Gulir ke bagian komentar terlebih dahulu."
+  },
+  "err_no_field": {
+    "message": "Kolom input komentar tidak ditemukan. Pastikan Anda sudah login."
+  },
+  "err_no_editor": {
+    "message": "Editor tidak muncul setelah mengklik area penampung teks."
+  },
+  "footer_generated": {
+    "message": "diringkas oleh Penyuling Transkrip"
+  },
+  "lbl_telemetry": {
+    "message": "Statistik Penggunaan"
+  },
+  "lbl_telemetry_desc": {
+    "message": "Kirim statistik penggunaan anonim ke marsgasse.com"
+  },
+  "lbl_telemetry_hint": {
+    "message": "Hanya dikirim saat tombol diklik: nama ekstensi, tindakan, dan pengaturan bahasa. Tidak ada data pribadi."
+  },
+  "err_key_invalid": {
+    "message": "⚠ Kunci API tidak valid – silakan masukkan yang baru."
+  },
+  "lbl_mood_list": {
+    "message": "Daftar Suasana Hati"
+  },
+  "lbl_mood_list_desc": {
+    "message": "Kata untuk {mood} — satu per baris"
+  },
+  "lbl_style_list": {
+    "message": "Daftar Gaya"
+  },
+  "lbl_style_list_desc": {
+    "message": "Kata untuk {style} — satu per baris"
+  },
+  "lbl_list_hint": {
+    "message": "Digunakan sebagai {mood} atau {style} dalam prompt. Satu kata atau frasa per baris."
+  }
+}
