@@ -5,7 +5,7 @@ document.querySelectorAll('[data-i18n]').forEach(el => {
 });
 
 // Language codes must match _locales folder names
-const LANG_CODES = ['ar','zh','en','fr','de','hi','ja','ko','pt','ru','es'];
+const LANG_CODES = ['ar','id','zh','en','fr','de','hi','ja','ko','pt','ru','es'];
 
 function detectBrowserLang() {
   const lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
